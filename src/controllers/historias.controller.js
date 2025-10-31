@@ -24,9 +24,9 @@ export const getHistorias = async (req, res) => {
 }
 
 export const saveHistorias = async (req, res) => {
-    const { column1, column2 } = req.body;
+    const { titulo, descripcion, fecha_historia } = req.body;
 
-    if (!column1 || !column2) {
+    if (!titulo || !descripcion || !fecha_historia) {
         return res.json(responseQueries.error({ message: "Datos incompletos" }));
     }
 
@@ -35,7 +35,7 @@ export const saveHistorias = async (req, res) => {
 
     const insert = await conn.query(
         `INSERT INTO ${db}.historias (titulo, descripcion, fecha_historia) VALUES (?, ?, ?);`,
-        [column1, column2]
+        [titulo, descripcion, fecha_historia]
     );
 
     if (!insert) return res.json(responseQueries.error({ message: "Error al guardar los datos" }));
