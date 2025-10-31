@@ -1,6 +1,6 @@
-import connectionMysql from "../config/database.js"
+import connectionMysql from "../config/database.js";
 
-let poll = null
+let pool = null;
 
 const getConnection = async () => {
     try {
@@ -18,7 +18,7 @@ const getConnection = async () => {
         console.error("║     ⚠️  ERROR: Fallo al conectar DB  ⚠️     ║");
         console.error("╚══════════════════════════════════════════════╝\n");
         console.log("╠══════════════════════════════════════════════╣");
-        console.error(`║                    ${error}                     ║`);
+        console.error(`║ ${error.message || error} ║`);
         console.log("╚══════════════════════════════════════════════╝");
         pool = null;
         return false;
