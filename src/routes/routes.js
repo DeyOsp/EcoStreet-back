@@ -5,7 +5,9 @@ import { AuthorizationVerify } from "../middleware/authorization.js"
 import { ConnectionVerify } from "../middleware/connection.js"
 
 // Controllers
-import { getTest, saveTest, updateTest, deleteTest } from "../controllers/test.controller.js"
+import { getComunidad, saveComunidad } from "../controllers/comunidad.controller.js"
+import { getHistorias, saveHistorias } from "../controllers/historias.controller.js"
+import { getReportes, saveReportes } from "../controllers/reportes.controller.js"
 
 // Database
 import { getConnect } from "../database/connection.controller.js"
@@ -14,15 +16,17 @@ const router = express();
 
 export const routes = () => {
 
-    // Routes CRUD example
-    router.get("/test/g/test-name", AuthorizationVerify, getTest)
-    router.post("/test/i/add-test-name", AuthorizationVerify, saveTest)
-    router.put("/test/u/edit-test-name", AuthorizationVerify, updateTest)
-    router.delete("/test/d/delete-test-name", AuthorizationVerify, deleteTest)
+    // Comunidad
+    router.get("/comunidad/g/get-comunidad", AuthorizationVerify, getComunidad)
+    router.post("/comunidad/i/save-comunidad", AuthorizationVerify, saveComunidad)
 
-    // In case you want to obtain the id by the parameters (URL)
-    // router.put("/test/u/edit-test-name/:id", AuthorizationVerify, updateTest)
-    // router.delete("/test/d/delete-test-name/:id", AuthorizationVerify, deleteTest)
+    // Historias
+    router.get("/historias/g/get-historias", AuthorizationVerify, getHistorias)
+    router.post("/historias/i/save-historias", AuthorizationVerify, saveHistorias)
+
+    // Reportes
+    router.get("/reportes/g/get-reportes", AuthorizationVerify, getReportes)
+    router.post("/reportes/i/save-reportes", AuthorizationVerify, saveReportes)
 
     // Database
     router.get("/connect/", ConnectionVerify, getConnect)
