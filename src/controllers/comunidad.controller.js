@@ -2,7 +2,7 @@ import getConnection from "../database/connection.mysql.js"
 import { variablesDB } from "../utils/params/const.database.js"
 import { responseQueries } from "../common/enum/queries/response.queries.js"
 
-export const getTest = async (req, res) => {
+export const getComunidad = async (req, res) => {
     const conn = await getConnection();
     const db = variablesDB.data_base;
     const query = `

@@ -2,7 +2,7 @@ import getConnection from "../database/connection.mysql.js"
 import { variablesDB } from "../utils/params/const.database.js"
 import { responseQueries } from "../common/enum/queries/response.queries.js"
 
-export const getTest = async (req, res) => {
+export const getHistorias = async (req, res) => {
     const conn = await getConnection();
     const db = variablesDB.data_base;
     const query = `
@@ -23,7 +23,7 @@ export const getTest = async (req, res) => {
     return res.json(select[0]);
 }
 
-export const saveTest = async (req, res) => {
+export const saveHistorias = async (req, res) => {
     const { column1, column2 } = req.body;
 
     if (!column1 || !column2) {
